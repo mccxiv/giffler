@@ -1,0 +1,19 @@
+{
+  "name": "giffler",
+  "version": "1.0.0",
+  "description": "Makes high quality gifs from video",
+  "main": "giffler.js",
+  "author": "Andrea Stella <adr.stella@gmail.com>",
+  "license": "ISC",
+  "repository": "https://github.com/mccxiv/giffler.git",
+  "bin": "./giffler.js",
+  "scripts": {
+    "postinstall": "node ./packages/install.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "death": "^1.0.0",
+    "fs-extra": "^0.24.0",
+    "yargs": "^3.29.0"
+  }
+}
