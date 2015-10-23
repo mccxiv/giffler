@@ -1,4 +1,5 @@
 var path = require('path');
+var fse = require('fs-extra');
 var AdmZip = require('adm-zip');
 
 try {
@@ -11,3 +12,5 @@ catch (e) {
 	console.log('No platform specific package found.');
 	console.log('You will need to install ffmpeg and ImageMagick convert yourself.');
 }
+
+fse.removeSync(path.join(__dirname, '..', 'packages'));

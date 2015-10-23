@@ -9,12 +9,11 @@ var onDeath = require('death')({uncaughtException: false});
 
 var programs = {
 	ffmpeg: {
-		win32: __dirname + '/libs/ffmpeg.exe',
-		//win32: 'libs/ffmpeg.exe',
+		win32: path.join(__dirname, 'libs', 'ffmpeg.exe'),
 		any: 'ffmpeg'
 	},
 	convert: {
-		win32: __dirname +'/libs/convert.exe',
+		win32: path.join(__dirname, 'libs', 'convert.exe'),
 		any: 'convert'
 	}
 };
@@ -22,7 +21,7 @@ var programs = {
 var opts = {
 	tmp: path.join(os.tmpdir(), 'giffler-frames-'+randomInt()),
 	input: argv.input? argv.input : null,
-	output: argv.output || 'giffler.gif',
+	output: argv.output || argv.input? path.basename(argv.input) + '.gif' : '',
 	loops: argv.loops || 0,
 	fps: argv.fps || 30,
 	fuzz: argv.fuzz || 0.75, // lower means less artifacts bigger filesize
@@ -120,6 +119,7 @@ function printHelp() {
 	console.log('    --loops 0');
 	console.log('    --fuzz 0.75');
 	console.log('    --dither none');
+	console.log('    --output <same as input plus .gif>');
 	console.log('');
 	console.log('  explained:');
 	console.log('    --loops:');
