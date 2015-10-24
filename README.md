@@ -40,9 +40,9 @@ parameters are optimal, or just run `npm install -g giffler`.
 The choice is yours.
 
 ### Legal
-- © 2015 Andrea Stella
-- License: ISC. Check the LICENSE file
+© 2015 Andrea Stella  
+ISC license. Check the LICENSE file
 
 
-- Uses ffmpeg - [ffmpeg.org](https://www.ffmpeg.org/)
-- Uses ImageMagick - [imagemagick.org](http://www.imagemagick.org/)
+Uses ffmpeg - [ffmpeg.org](https://www.ffmpeg.org/)  
+Uses ImageMagick - [imagemagick.org](http://www.imagemagick.org/)
