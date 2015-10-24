@@ -1,7 +1,7 @@
 {
   "name": "giffler",
   "version": "1.0.0",
-  "description": "Makes high quality gifs from video",
+  "description": "Convert video to gifs with the command line",
   "main": "giffler.js",
   "author": "Andrea Stella <adr.stella@gmail.com>",
   "license": "ISC",
