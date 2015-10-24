@@ -24,7 +24,7 @@ var opts = {
 	output: argv.output || argv.input? path.basename(argv.input) + '.gif' : '',
 	loops: argv.loops || 0,
 	fps: argv.fps || 30,
-	fuzz: argv.fuzz || 0.75, // lower means less artifacts bigger filesize
+	fuzz: argv.fuzz || 3,
 	dither: typeof argv.dither === 'string'? argv.dither : 'FloydSteinberg',
 	memory: argv.memory
 };
