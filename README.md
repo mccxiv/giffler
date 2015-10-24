@@ -28,9 +28,13 @@ giffler --help
 ```
 
 ### FAQ
+- How to resize/crop/cut?  
+Do that before using giffler, I like [HandBrake](https://handbrake.fr).
+
 - Isn't this just a wrapper around other tools?  
 Yes. You could spend a day figuring out how to get everything working and which
-parameters to use, or just run `npm install -g giffler`. The choice is yours.
+parameters are optimal, or just run `npm install -g giffler`.
+The choice is yours.
 
 ### Legal
 - © 2015 Andrea Stella
