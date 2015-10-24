@@ -21,10 +21,11 @@ var programs = {
 var opts = {
 	tmp: path.join(os.tmpdir(), 'giffler-frames-'+randomInt()),
 	input: argv.input? argv.input : null,
-	output: argv.output || argv.input? path.basename(argv.input) + '.gif' : '',
+	output: argv.output || (argv.input? path.basename(argv.input) + '.gif' : ''),
 	loops: argv.loops || 0,
 	fps: argv.fps || 30,
-	fuzz: argv.fuzz || 3,
+	fuzz: argv.fuzz || '3%',
+	resize: typeof argv.resize === 'string'? argv.resize : '',
 	dither: typeof argv.dither === 'string'? argv.dither : 'FloydSteinberg',
 	memory: argv.memory
 };
@@ -64,6 +65,8 @@ function makeFrames() {
 		path.join(opts.tmp, 'f%07d.png')
 	];
 
+	if (argv.debug) console.log('Calling ffmpeg with these args:', args);
+
 	console.log('Extracting frames...');
 	child.execFile(program, args, function(err) {
 		if (err) fail(err);
@@ -78,8 +81,9 @@ function makeGif() {
 		'-delay ' + (100 / opts.fps),
 		'-loop ' + opts.loops,
 		path.join(opts.tmp, 'f*.png'),
+		opts.resize? '-resize ' + opts.resize : '',
 		'-dither ' + opts.dither,
-		'-fuzz ' + opts.fuzz + '%',
+		'-fuzz ' + opts.fuzz,
 		'-coalesce',
 		'-layers optimize-transparency',
 		opts.output
@@ -87,6 +91,8 @@ function makeGif() {
 
 	// An empty argument '' can cause execFile to hang so remove them...
 	args = args.filter(function(e) {return e;}).join(' ').split(' ');
+
+	if (argv.debug) console.log('Calling convert with these args:', args);
 
 	console.log('Making gif...');
 	child.execFile(program, args, function(err) {
@@ -123,7 +129,8 @@ function printHelp() {
 	console.log('    --memory <based on system>');
 	console.log('    --fps 30');
 	console.log('    --loops 0');
-	console.log('    --fuzz 3');
+	console.log('    --fuzz 3%');
+	console.log('    --resize 100%');
 	console.log('    --dither FloydSteinberg');
 	console.log('');
 	console.log('  explained:');
@@ -135,10 +142,12 @@ function printHelp() {
 	console.log('        the number of times the gif should loop');
 	console.log('        zero means infinite');
 	console.log('     --fuzz:');
-	console.log('        number 0-100, representing a percentage of color variation');
+	console.log('        0%-100%, representing a percentage of color variation');
 	console.log('        colors near each other will be considered the same');
 	console.log('        higher values reduce file size but cause artifacts');
 	console.log('        recommended values: between 0.5 and 10');
+	console.log('     --resize:');
+	console.log('        percentage, or width in pixels. aspect ratio is preserved');
 	console.log('    --dither:');
 	console.log('        on by default, turn off with --dither none');
 	console.log('        helps gradients and film greatly by intentionally adding noise');
