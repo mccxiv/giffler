@@ -9,6 +9,9 @@ formats (anything supported by ffmpeg) to gif files without compromising on
 quality. Output gifs are not as huge as you might think, ImageMagick's convert
 has some incredible optimization algorithms.
 
+![](http://mccxiv.me/files/bbb60fps3fuzz.gif)  
+*60 fps 3% fuzz, dithering on:* `giffler --input bunny.mp4 --fps 60`
+
 ### installation
 ```
 npm install -g giffler
@@ -28,7 +31,7 @@ giffler --help
 ```
 
 ### FAQ
-- How to resize/crop/cut?  
+- How to edit/crop/cut/shorten?  
 Do that before using giffler, I like [HandBrake](https://handbrake.fr).
 
 - Isn't this just a wrapper around other tools?  
