@@ -25,7 +25,7 @@ var opts = {
 	loops: argv.loops || 0,
 	fps: argv.fps || 30,
 	fuzz: argv.fuzz || 0.75, // lower means less artifacts bigger filesize
-	dither: argv.dither? 'FloydSteinberg' : 'none',
+	dither: typeof argv.dither === 'string'? argv.dither : 'FloydSteinberg',
 	memory: argv.memory
 };
 
@@ -79,7 +79,7 @@ function makeGif() {
 		'-dither ' + opts.dither,
 		'-fuzz ' + opts.fuzz + '%',
 		'-coalesce',
-		'-layers optimize',
+		'-layers optimize-transparency',
 		opts.output
 	];
 
@@ -118,7 +118,7 @@ function printHelp() {
 	console.log('    --fps 30');
 	console.log('    --loops 0');
 	console.log('    --fuzz 0.75');
-	console.log('    --dither none');
+	console.log('    --dither FloydSteinberg');
 	console.log('    --output <same as input plus .gif>');
 	console.log('');
 	console.log('  explained:');
@@ -126,15 +126,12 @@ function printHelp() {
 	console.log('        the number of times the gif should loop');
 	console.log('        zero means infinite');
 	console.log('     --fuzz:');
-	console.log('        number 0-100, representing a percentage');
+	console.log('        number 0-100, representing a percentage of color variation');
 	console.log('        colors near each other will be considered the same');
-	console.log('        higher values cause more artifacts and lower file size');
-	console.log('        recommended values are between 0.5 and 5');
+	console.log('        higher values reduce file size but cause artifacts');
+	console.log('        keep low for animations (0.75), and higher for film (2-10)');
 	console.log('    --dither:');
-	console.log('        opposite of --fuzz but they can be used together');
-	console.log('        sprinkles the image with dots');
-	console.log('        helps with gradients and photographs');
-	console.log('        increases file size');
-	console.log('        absent parameter means it\'s off');
-	console.log('        tip: keep a low fuzz when using dither or they cancel each other');
+	console.log('        on by default, turn off with --dither none');
+	console.log('        helps gradients and film greatly by intentionally adding noise');
+	console.log('        should be disabled for animations and screencasts');
 }
