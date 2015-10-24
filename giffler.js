@@ -29,8 +29,10 @@ var opts = {
 	memory: argv.memory
 };
 
-if (opts.input) gif();
+if (argv.help) printHelp();
+else if (opts.input) gif();
 else fail('Missing input, use --input');
+
 onDeath(function() {
 	// TODO this isn't pretty
 	// onDeath() attaches listeners, this causes fail() to trigger automatically
@@ -109,19 +111,26 @@ function fail(msg) {
 
 function printHelp() {
 	console.log('');
-	console.log(' giffler!');
+	console.log('  giffler!');
 	console.log('');
 	console.log('  required:');
 	console.log('    --input <filename>');
+	console.log('    or');
+	console.log('    --help');
 	console.log('');
 	console.log('  optional and their defaults:');
+	console.log('    --output <same as input plus .gif>');
+	console.log('    --memory <based on system>');
 	console.log('    --fps 30');
 	console.log('    --loops 0');
 	console.log('    --fuzz 3');
 	console.log('    --dither FloydSteinberg');
-	console.log('    --output <same as input plus .gif>');
 	console.log('');
 	console.log('  explained:');
+	console.log('    --memory:');
+	console.log('        limit memory usage to this many megabytes');
+	console.log('        when omitted, it will automatically use as much as available');
+	console.log('        make this number close to the amount of *free* memory you have');
 	console.log('    --loops:');
 	console.log('        the number of times the gif should loop');
 	console.log('        zero means infinite');
