@@ -117,7 +117,7 @@ function printHelp() {
 	console.log('  optional and their defaults:');
 	console.log('    --fps 30');
 	console.log('    --loops 0');
-	console.log('    --fuzz 0.75');
+	console.log('    --fuzz 3');
 	console.log('    --dither FloydSteinberg');
 	console.log('    --output <same as input plus .gif>');
 	console.log('');
@@ -129,9 +129,9 @@ function printHelp() {
 	console.log('        number 0-100, representing a percentage of color variation');
 	console.log('        colors near each other will be considered the same');
 	console.log('        higher values reduce file size but cause artifacts');
-	console.log('        keep low for animations (0.75), and higher for film (2-10)');
+	console.log('        recommended values: between 0.5 and 10');
 	console.log('    --dither:');
 	console.log('        on by default, turn off with --dither none');
 	console.log('        helps gradients and film greatly by intentionally adding noise');
-	console.log('        should be disabled for animations and screencasts');
+	console.log('        should be disabled for most animations and screencasts');
 }
