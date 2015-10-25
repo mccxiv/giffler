@@ -13,8 +13,14 @@
   "keywords": [
     "video",
     "gif",
+    "video to gif",
     "mp4 to gif",
     "avi to gif",
+    "mp4",
+    "avi",
+    "ffmpeg",
+    "imagemagick",
+    "convert",
     "webm",
     "gifv"
   ],
