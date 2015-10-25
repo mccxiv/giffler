@@ -42,10 +42,7 @@ Yes. You could spend a day figuring out how to get everything working and which
 parameters are optimal, or just run `npm install -g giffler`.
 The choice is yours.
 
-### Legal
-© 2015 Andrea Stella  
-ISC license. Check the LICENSE file
-
+###### © 2015 Andrea Stella, ISC license.
 
 Uses ffmpeg - [ffmpeg.org](https://www.ffmpeg.org/)  
 Uses ImageMagick - [imagemagick.org](http://www.imagemagick.org/)
