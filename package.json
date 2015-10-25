@@ -1,6 +1,6 @@
 {
   "name": "giffler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert video to gifs with the command line",
   "main": "giffler.js",
   "author": "Andrea Stella <adr.stella@gmail.com>",
@@ -10,6 +10,14 @@
   "scripts": {
     "postinstall": "node ./packages/install.js"
   },
+  "keywords": [
+    "video",
+    "gif",
+    "mp4 to gif",
+    "avi to gif",
+    "webm",
+    "gifv"
+  ],
   "preferGlobal": true,
   "dependencies": {
     "adm-zip": "^0.4.7",
