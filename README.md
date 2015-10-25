@@ -34,6 +34,9 @@ giffler --help
 - How to edit/crop/cut/shorten?  
 Do that before using giffler, I like [HandBrake](https://handbrake.fr).
 
+- Found a problem of any kind?  
+Open an issue on github! :smile:
+
 - Isn't this just a wrapper around other tools?  
 Yes. You could spend a day figuring out how to get everything working and which
 parameters are optimal, or just run `npm install -g giffler`.
