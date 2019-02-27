@@ -18,6 +18,7 @@ var programs = {
 	}
 };
 
+var noop = function() {};
 var opts = {
 	tmp: path.join(os.tmpdir(), 'giffler-frames-'+randomInt()),
 	input: argv.input? argv.input : null,
@@ -27,7 +28,8 @@ var opts = {
 	fuzz: argv.fuzz || '3%',
 	resize: typeof argv.resize === 'string'? argv.resize : '',
 	dither: typeof argv.dither === 'string'? argv.dither : 'FloydSteinberg',
-	memory: argv.memory
+	memory: argv.memory,
+	callback: argv.callback || noop
 };
 
 if (argv.help) printHelp();
@@ -98,6 +100,7 @@ function makeGif() {
 	child.execFile(program, args, function(err) {
 		if (err) fail('convert error: ' + err.toString());
 		removeTempDirectory();
+		opts.callback();
 		console.log('Done!');
 	});
 }
